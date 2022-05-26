@@ -1,19 +1,22 @@
 const form = document.querySelector('#form');
-form.addEventListener('submit',(event) =>{
+form.addEventListener('submit',(event) =>{ 
     event.preventDefault();
     sumatoriaPersonas();
 });
-
-
+// Te acordas cuando vimos eso del submit??  es el button q está al final del form.
+// Ahí uso el parametro event para hacer andar el PreventDefault(); recordas la funcion de esto no?
+// Probé primero con varias funciones, pero me dió pereza y hice todo en uno. iba a hacer así pero al final decidí en una.
+//Hago todo ahí, quedó el nombre de Personas pero es mejor q sea sumatoriaTodo.
+// el select lo selecciono a través del name.
 function sumatoriaPersonas(){
-    let suma = 0;
-    let selectVehiculo = document.querySelector('[name="selectVehiculo"]').value;
-    let cantMayores = document.querySelector('#cantMayores').value;
+    let suma = 0; // esta variable va a empezar acá y va a terminar en el final del todo. esto es el total. 
+    let selectVehiculo = document.querySelector('[name="selectVehiculo"]').value; //aclaro q quiero el value. vamos al HTML para q veas.
+    let cantMayores = document.querySelector('#cantMayores').value; 
     let cantMenores = document.querySelector('#cantMenores').value;
 
-    if(selectVehiculo != 0){
-        if(selectVehiculo === "Auto"){
-            suma = 2;    
+    if(selectVehiculo != 0){  //Si es distinto, entonces está seleccionado en algo sería. por q 0 es "Seleccionar Vehiculo"
+        if(selectVehiculo === "Auto"){ 
+            suma = 2;   
         }
         if(selectVehiculo === "Camioneta"){
             suma = 3;
@@ -23,15 +26,19 @@ function sumatoriaPersonas(){
         }
     }
     if(cantMayores > 0 || cantMenores > 0){
-        suma += (cantMayores*1.50);
+        suma += (cantMayores*1.50); //+= es igual a decir como suma = suma + (cantMayores*1.50);
     }
-
-    let selectPago = document.querySelector('input[name="pagoElegido"]:checked');
+    //suma es un acumulador, empieza de arriba y termina abajo, recorre todo el camino para sacar el total. Por eso hago suma = suma + cant....;
     
+
+    let selectPago = document.querySelector('input[name="pagoElegido"]:checked'); // Acá puse :checked. osea voy a tomar solamente los q esten seleccionados. checked es cuando dejaste seleccionado, esto es el radio button.
+    
+    //no está dentro de un input
+    //voy a todos los input q tengan dicho name.
     switch (selectPago.value) {  
         case "visa1":
         case "master2":
-                suma += (suma*10/100);
+                suma += (suma*10/100); //no te olvides q ese suma empezó arriba y termina abajo. es el total q va a mostrar. osea si o si va a recorrer todo. es el acumulador. mira donde está suma.
             break;
         case "visa2":
         case "master3":
@@ -45,21 +52,23 @@ function sumatoriaPersonas(){
             break;
     }
 
-    let selectComida = document.querySelector('[name="selectComida"]').value;
-    let inputCantComida = document.querySelector('#cantComida').value;
-    let selectComidaOpcional = document.querySelectorAll('input[name="selectComidaOpcional"]:checked');
-    let checkedComidaOpc = [];
-    selectComidaOpcional.forEach((checkbox) =>{
-        checkedComidaOpc.push(checkbox.value);
-    });
+    let selectComida = document.querySelector('[name="selectComida"]').value; //otro select. el select siempre uso el name. y .value para las opciones q tiene el select.
+    let inputCantComida = document.querySelector('#cantComida').value; 
+    let selectComidaOpcional = document.querySelectorAll('input[name="selectComidaOpcional"]:checked'); 
+    //acá tiene checkbox, pueden elegir 1 o más comida a la vez, entonces hice un vector q vaya tomando lo q eligió
+    let checkedComidaOpc = []; //vector nuevo vacio.
+    selectComidaOpcional.forEach((checkbox) =>{  //acá voy a recorrer los q estén checkeados en el check box, y a los q están checkeado voy guardando el value de cada uno en el vector. ya vamos a ver despues en el navegador.
+        checkedComidaOpc.push(checkbox.value); //push para ir agregando al vector q creo en la linea 59
+    }); //ya lo vemos en consola así se entiende esta parte.
 
     if(selectComida != 0){
         if(inputCantComida > 0){
-            if(selectComida == 1) suma += (1.5*inputCantComida);
+            if(selectComida == 1) suma += (1.5*inputCantComida); //elegis una paty ponele, multiplicas por la cantidad de paty q elige comprar, por eso 1.5 * la cantidad. 
             if(selectComida == 2 || selectComida == 3) suma += (2*inputCantComida);
         }
     }     
     
+    // Acá fui recorriendo el vector nuevo q hice arribita, voy a ver q comida tiene seleccionadas. Esto lo vemos en consola y de ahi venimos para acá así se entiende.
     if(checkedComidaOpc.length > 0){
         for(let i = 0; i < checkedComidaOpc.length;i++){
             if(checkedComidaOpc[i] === "Gaseosa") suma += 1;
@@ -67,7 +76,9 @@ function sumatoriaPersonas(){
         }        
     }
 
-    let textTotal = document.createElement("p");
-    document.body.appendChild(textTotal);
-    textTotal.innerHTML = `TOTAL A PAGAR = $${suma}`;
+    let textTotal = document.createElement("p"); //esto es para crear un elemento HTML desde acá. Por q en el html no está este p (parrafo).
+    document.body.appendChild(textTotal); //acá digo q agregue el p en el body, osea textTotal tiene un elemento p. ese textTotal lo agrego en el body con el append...
+    textTotal.innerHTML = `TOTAL A PAGAR = $${suma}`; 
+
+    console.log(checkedComidaOpc);
 }
