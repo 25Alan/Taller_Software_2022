@@ -5,11 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AUTOCINE</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <h1>BIENVENIDO AL AUTOCINE CATAMARCA</h1>
-
     <form id="form">  
+        <h1>BIENVENIDO AL AUTOCINE CATAMARCA</h1>
 
         <h2>Completar los siguiente datos</h2>
         <select name="selectVehiculo"> //el name. abarca todo el select.  Uso los valores osea los value. para saber en donde dejaron seleccionado.
@@ -18,24 +18,23 @@
             <option value="Camioneta">Camioneta</option>
             <option value="Otro">Otro</option>
         </select>
-        <br><br>
         
         <label for="cantPersonasMayores">Cantidad de personas (Mayores a 8 años) :</label>
         <input type="number" name="cantPersonasMayores" id="cantMayores"><br><br>
         <label for="cantPersonasMenores">Cantidad de personas (Menores a 8 años) :</label>
-        <input type="number" name="cantPersonasMenores" id="cantMenores"><hr>
+        <input type="number" name="cantPersonasMenores" id="cantMenores">
 
         <h3>Elegir forma de pago</h3>
 
         <label for="pagoElegido">Contado</label>
-        <input type="radio" name="pagoElegido" value="Contado" checked><br><br>
+        <input type="radio" name="pagoElegido" value="Contado" checked>
         
         <label for="pagoElegido">Tarjeta Visa (1-3 cuotas / 10% aumento)</label>
         <input type="radio" name="pagoElegido" value="visa1">
         <label for="pagoElegido">(4-6 cuotas / 25% aumento)</label>
         <input type="radio" name="pagoElegido" value="visa2">
         <label for="pagoElegido">(> 7 cuotas / 35% aumento)</label>
-        <input type="radio" name="pagoElegido" value="visa3"><br><br>
+        <input type="radio" name="pagoElegido" value="visa3">
         
         <label for="pagoElegido">Tarjeta Mastercard (1-3 cuotas / 5% aumento)</label>
         <input type="radio" name="pagoElegido" value="master1">
@@ -52,17 +51,16 @@
             <option value="3">Hamburguesa completa-Zapping ($2)</option>
         </select>
         <input type="number" id="cantComida" placeholder="Cantidad">
-        <br><br>
         
         <label for="selectComidaOpcional">Gaseosa (1$)</label>
         <input type="checkbox" name="selectComidaOpcional" value="Gaseosa">
         <label for="selectComidaOpcional">Papas(0.5$)</label>
-        <input type="checkbox" name="selectComidaOpcional" value="Papas"><br><br>
+        <input type="checkbox" name="selectComidaOpcional" value="Papas">
         
         <button>Confirmar</button> 
     </form>
 
-    <script src="javascript/punto40.js"></script>
+    <script src="javascript/puntos_1_40/punto40.js"></script>
 </body>
 </html>
 <!--
