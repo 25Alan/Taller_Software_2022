@@ -10,15 +10,10 @@ export class Login{
         this.password = password;
     }
 
-    /**
-     * 
-     * @param {string} user User of form
-     * @returns {boolean}
-     */
     validUser(){
         let valid = /^[a-zA-Z0-9]*$/
     
-        if (valid.test(this.user)) return true;
+        if (valid.test(this.user) == true) return true;
         else return false;
     }
 }

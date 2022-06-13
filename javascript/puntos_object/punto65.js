@@ -2,4 +2,8 @@ import { Login } from "../../models/classvalidLogin";
 
 const user1 = new Login("alan","password");
 
-console.log(user1.validUser());
+const form = document.querySelector('#Form');
+
+form.addEventListener('submit', (event) => {
+    event.preventDefault();
+})
